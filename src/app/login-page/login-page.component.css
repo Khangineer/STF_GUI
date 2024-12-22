@@ -1,0 +1,17 @@
+.hero{
+    background-image: url("/assets/images/Background_AI.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.column{
+    margin-top: 10%;
+}
+
+img{
+    margin-bottom: 1%;
+}
+
+.field{
+    margin: 2%;
+}

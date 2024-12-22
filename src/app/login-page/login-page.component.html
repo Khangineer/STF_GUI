@@ -1,0 +1,55 @@
+<div class="hero is-fullheight"> 
+    <div class="columns is-vcentered">
+        <div class="column">
+    
+        </div>
+        <div class="column">
+    
+        </div>
+        <div class="column has-text-centered">
+            <div id="panel">
+                <img src="/assets/images/LogoSTF_White.png" alt="logo">
+                    <div class="field">
+                      <p class="control">
+                        <button class="button is-large is-rounded is-link" (click)="ConnectMetaMask()">
+                          Enter
+                        </button>
+                      </p>
+                    </div>
+                <br>
+              </div>
+              <div id="loginForm" *ngIf="accountConnected">
+                <form [formGroup]="myForm" (ngSubmit)="Login()">
+                  <div *ngIf="loginNeeded">
+                    <label class="label has-text-white">Log into your account</label>
+                  </div>
+                  <div *ngIf="registerNeeded">
+                    <label class="label has-text-white">Choose a password for your account</label>
+                  </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input formControlName="password" class="input is-rounded is-link is-hovered" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                          <i class="fa fas fa-lock"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control">
+                        <button type="submit" class="button is-success" [disabled]="myForm.invalid">
+                          Login
+                        </button>
+                      </p>
+                    </div>
+                </form>
+              </div>
+        </div>
+        <div class="column">
+    
+        </div>
+        <div class="column">
+    
+        </div>
+</div>
+
+
