@@ -2,18 +2,18 @@
 
 <nav class="level" *ngIf="this.loggedUser">
     <div class="level-item has-text-centered">
-        <button class="button is-large">Fleet</button>
+        <button class="button is-large" (click)="NavFleet()">Fleet</button>
     </div>
 
     <div class="level-item has-text-centered">
-        <button class="button is-large">Resources</button>
+        <button class="button is-large" (click)="NavResources()">Resources</button>
     </div>
 
     <div class="level-item has-text-centered">
-        <button class="button is-large">Colonies</button>
+        <button class="button is-large" (click)="NavColonies()">Colonies</button>
     </div>
 
     <div class="level-item has-text-centered">
-        <button class="button is-large">Navigation</button>
+        <button class="button is-large" (click)="NavNavigation()">Navigation</button>
     </div>
   </nav>
