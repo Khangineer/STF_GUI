@@ -2,12 +2,14 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    display: flex; /* Używamy flexboxa do rozmieszczenia przycisków */
   }
   
   .level-item {
-    flex-grow: 1; /* Umożliwia elementom poziomu rozciąganie się, aby wypełniały przestrzeń */
+    flex: 1; /* Każdy level-item wypełnia całą przestrzeń dostępną w level */
+    display: flex; /* Używamy flex w itemach, aby przyciski rozciągały się na całą szerokość */
   }
   
   .level .button {
-    width: 470px; /* Przyciski wypełniają dostępne miejsce */
+    width: 100%; /* Przyciski wypełniają dostępne miejsce w level-item */
   }
