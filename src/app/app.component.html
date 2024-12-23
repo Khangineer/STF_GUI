@@ -1,1 +1,24 @@
 <router-outlet></router-outlet>
+
+<nav class="level" *ngIf="this.loggedUser">
+    <div class="level-item has-text-centered">
+      <div>
+        <button class="button is-large is-fullwidth">Fleet</button>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <button class="button is-large is-fullwidth">Resources</button>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <button class="button is-large is-fullwidth">Colonies</button>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <button class="button is-large is-fullwidth">Navigation</button>
+      </div>
+    </div>
+  </nav>

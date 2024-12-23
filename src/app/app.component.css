@@ -1,0 +1,13 @@
+.level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .level-item {
+    flex-grow: 1; /* Umożliwia elementom poziomu rozciąganie się, aby wypełniały przestrzeń */
+  }
+  
+  .level .button {
+    width: 470px; /* Przyciski wypełniają dostępne miejsce */
+  }
