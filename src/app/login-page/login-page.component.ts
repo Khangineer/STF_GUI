@@ -91,6 +91,7 @@ export class LoginPageComponent implements OnInit{
           console.log("zalogowano");
           this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
           this.loggeduserData.loggedUserWalletAddressSTF = this.UserAccount + "STF";
+          this.loggeduserData.loggedUser = user;
           this.routerAN.navigate(['/dashboard']);
         }
       });
@@ -101,6 +102,18 @@ export class LoginPageComponent implements OnInit{
           console.log('Error:', ack);
         } else {
           console.log('User created successfully:', ack);
+        }
+      });
+
+      user.auth(this.UserAccount + "STF", this.myForm.get('password')?.value, (ack) =>{
+        if ('err' in ack) {
+          // Niepoprawne hasło
+        } else {
+          console.log("zalogowano");
+          this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
+          this.loggeduserData.loggedUserWalletAddressSTF = this.UserAccount + "STF";
+          this.loggeduserData.loggedUser = user;
+          this.routerAN.navigate(['/dashboard']);
         }
       });
     }
