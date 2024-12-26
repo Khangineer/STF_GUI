@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class LoggedUserDataService {
   loggedUserWalletAddress : string = "not_assigned";
-  loggedUserWalletAddressSTF : string = "not_assigned"
-  loggedUser : any;
+  loggedUserWalletAddressSTFA : string = "not_assignedA"
+  loggedUserGunInstance : any;
+  loggedUserModelInstance : any;
   constructor() { }
 }

@@ -8,6 +8,7 @@ import Gun from 'gun';
 import 'gun/sea';
 import { env } from '../../../env';
 import { LoggedUserDataService } from '../../../resources/logged-user-data.service';
+import { User } from '../../../Models/User';
 
 
 @Component({
@@ -67,8 +68,7 @@ export class LoginPageComponent implements OnInit{
       const gun = Gun();
       this.accountConnected = true;
 
-      gun.get(`~@${this.UserAccount + "STF"}`).once(data => {
-        console.log(data);
+      gun.get(`~@${this.UserAccount + "STFA"}`).once(data => {
         if (data) {
           this.loginNeeded = true;
         } else {
@@ -84,38 +84,46 @@ export class LoginPageComponent implements OnInit{
     const SEA = Gun.SEA;
     
     if(this.loginNeeded){
-      user.auth(this.UserAccount + "STF", this.myForm.get('password')?.value, (ack) =>{
+      user.auth(this.UserAccount + "STFA", this.myForm.get('password')?.value, (ack) =>{
         if ('err' in ack) {
-          // Niepoprawne hasło
+          console.log(ack.err);
         } else {
           console.log("zalogowano");
           this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
-          this.loggeduserData.loggedUserWalletAddressSTF = this.UserAccount + "STF";
-          this.loggeduserData.loggedUser = user;
-          this.routerAN.navigate(['/dashboard']);
+          this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
+          this.loggeduserData.loggedUserGunInstance = user;
+
+          user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
+            this.loggeduserData.loggedUserModelInstance = data;
+            this.routerAN.navigate(['/dashboard']);
+          })
         }
       });
     }
     else{
-      user.create(this.UserAccount + "STF", this.myForm.get('password')?.value, ack => {
-        if (ack) {
-          console.log('Error:', ack);
-        } else {
-          console.log('User created successfully:', ack);
-        }
+      user.create(this.UserAccount + "STFA", this.myForm.get('password')?.value, ack => {
+        user.auth(this.UserAccount + "STFA", this.myForm.get('password')?.value, (ack) =>{
+          if ('err' in ack) {
+            console.log('Tutaj:', ack);
+          } else {
+            console.log("zalogowano");
+            this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
+            this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
+            this.loggeduserData.loggedUserGunInstance = user;
+  
+            const userModel : User = {
+              walletAddress: this.UserAccount,
+              reputation: 0
+            }
+            
+            user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(userModel, (ack) => {
+              this.loggeduserData.loggedUserModelInstance = userModel;
+              this.routerAN.navigate(['/dashboard']);
+            });
+          }
+        });
       });
 
-      user.auth(this.UserAccount + "STF", this.myForm.get('password')?.value, (ack) =>{
-        if ('err' in ack) {
-          // Niepoprawne hasło
-        } else {
-          console.log("zalogowano");
-          this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
-          this.loggeduserData.loggedUserWalletAddressSTF = this.UserAccount + "STF";
-          this.loggeduserData.loggedUser = user;
-          this.routerAN.navigate(['/dashboard']);
-        }
-      });
     }
   }
 }

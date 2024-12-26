@@ -13,6 +13,6 @@ import { AppComponent } from '../app.component';
 export class DashboardComponent {
 
   constructor(private loggedUserData : LoggedUserDataService, private appC : AppComponent){
-    this.appC.SetLoggedUser(this.loggedUserData.loggedUser);
+    
   }
 }

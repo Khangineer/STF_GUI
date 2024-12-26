@@ -7,7 +7,7 @@ export const LoginGuard = () => {
   
   const router = inject(Router);
   const loggedUserData = inject(LoggedUserDataService);
-  if(loggedUserData.loggedUserWalletAddress != "not_assigned" && loggedUserData.loggedUserWalletAddressSTF != "not_assigned"){
+  if(loggedUserData.loggedUserWalletAddress != "not_assigned" && loggedUserData.loggedUserWalletAddressSTFA != "not_assignedA"){
     return true;
   }
   else{

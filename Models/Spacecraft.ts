@@ -3,4 +3,5 @@ export interface Spacecraft{
     name : string;
     hasHyperdrive : boolean;
     capacity: number;
+    attackPower : number;
 }
