@@ -95,7 +95,7 @@ export class LoginPageComponent implements OnInit{
 
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
             this.loggeduserData.loggedUserModelInstance = data;
-            this.routerAN.navigate(['/dashboard']);
+            this.routerAN.navigate(['/colonies']);
           })
         }
       });
@@ -118,7 +118,7 @@ export class LoginPageComponent implements OnInit{
             
             user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(userModel, (ack) => {
               this.loggeduserData.loggedUserModelInstance = userModel;
-              this.routerAN.navigate(['/dashboard']);
+              this.routerAN.navigate(['/colonies']);
             });
           }
         });

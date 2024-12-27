@@ -1,5 +1,4 @@
 import { inject } from "@angular/core";
-import { DashboardComponent } from "../src/app/dashboard/dashboard.component";
 import { Router } from "@angular/router";
 import { LoggedUserDataService } from "./logged-user-data.service";
 
