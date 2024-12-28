@@ -4,4 +4,5 @@ export interface Spacecraft{
     hasHyperdrive : boolean;
     capacity: number;
     attackPower : number;
+    imagePinata_CID: string;
 }

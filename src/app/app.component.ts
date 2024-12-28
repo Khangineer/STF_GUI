@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'STF_GUI';
-  loggedUser : any;
+  loggedUser : any = null;
 
   constructor(private router : Router){}
   SetLoggedUser(lg : any){

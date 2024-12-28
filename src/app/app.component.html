@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<nav class="level" *ngIf="this.loggedUser">
+<nav class="level" *ngIf="this.loggedUser != null">
     <div class="level-item has-text-centered">
         <button class="button is-large" (click)="NavFleet()">Fleet</button>
     </div>

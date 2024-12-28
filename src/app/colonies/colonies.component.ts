@@ -7,6 +7,7 @@ import { env } from '../../../env';
 import { Galaxy } from '../../../Models/Galaxy';
 import { Planet } from '../../../Models/Planet';
 import { Resource } from '../../../Models/Resource';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-colonies',
@@ -17,7 +18,13 @@ import { Resource } from '../../../Models/Resource';
 })
 export class ColoniesComponent implements OnInit{
   colonies : any;
-  constructor(private loggedUserData : LoggedUserDataService){}
+  file!: File;
+  imageUrl: string | null = null;
+  isImage: boolean = false;
+  constructor(private loggedUserData : LoggedUserDataService, private appC : AppComponent){
+    appC.SetLoggedUser("logged");
+    console.log(this.loggedUserData.loggedUserModelInstance);
+  }
 
   ngOnInit(): void {
     this.loggedUserData.loggedUserGunInstance.get(this.loggedUserData.loggedUserWalletAddressSTFA).once((data: any) => {
@@ -27,6 +34,7 @@ export class ColoniesComponent implements OnInit{
 
   async SD(){
 
+    /*
     const resources: Resource[] = [
       { U_RID: 0, name: "Velirium", quality: 1, isNecessaryForHyperdriveContruction: false, weight: 5 },
       { U_RID: 1, name: "Quemitum", quality: 4, isNecessaryForHyperdriveContruction: false, weight: 2 },
@@ -142,5 +150,27 @@ export class ColoniesComponent implements OnInit{
     console.log(error);
   }
   
+  */
+
+
+  }
+
+  async onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    this.file = file!;
+
+    const pinata = new PinataSDK({
+      pinataJwt: env.JWT,
+      pinataGateway: "brown-faithful-shrimp-92.mypinata.cloud",
+    })
+  
+    try {
+      const response = await pinata.upload.file(this.file);
+  
+      console.log(response);
+    } catch (error) {
+      console.error("Wystąpił błąd podczas przesyłania pliku:", error);
+    }
   }
 }

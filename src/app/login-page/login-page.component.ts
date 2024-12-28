@@ -9,6 +9,7 @@ import 'gun/sea';
 import { env } from '../../../env';
 import { LoggedUserDataService } from '../../../resources/logged-user-data.service';
 import { User } from '../../../Models/User';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -52,13 +53,14 @@ export class LoginPageComponent implements OnInit{
     }
 
     
-  constructor(private fb : FormBuilder, private router : Router, private loggeduserData : LoggedUserDataService){
+  constructor(private fb : FormBuilder, private router : Router, private loggeduserData : LoggedUserDataService, private appC : AppComponent){
       this.myForm = this.fb.group({
         password: ['']
       });
       this.routerAN = router;
+      appC.SetLoggedUser(null);
     }
-
+  
   async ConnectMetaMask(){
     await this.MetaMaskSDK.request({ method: 'eth_requestAccounts' }).then((accounts : any) => {    
       this.UserAccount = accounts[0];
@@ -91,10 +93,10 @@ export class LoginPageComponent implements OnInit{
           console.log("zalogowano");
           this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
           this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
-          this.loggeduserData.loggedUserGunInstance = user;
+          this.loggeduserData.loggedUserGunInstance = user
 
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
-            this.loggeduserData.loggedUserModelInstance = data;
+            this.loggeduserData.loggedUserModelInstance = JSON.parse(data);
             this.routerAN.navigate(['/colonies']);
           })
         }
@@ -113,10 +115,13 @@ export class LoginPageComponent implements OnInit{
   
             const userModel : User = {
               walletAddress: this.UserAccount,
-              reputation: 0
+              reputation: 0,
+              ownedSpacecrafts: [
+                {U_SID: 0, name: "Pioneer", hasHyperdrive: false, capacity: 4000, attackPower: 2, imagePinata_CID: "bafybeieip74a66t2i33ovck7igngb7w6vdavxemeck5lfih3ik5mccxqcm"}
+              ]
             }
             
-            user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(userModel, (ack) => {
+            user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(JSON.stringify(userModel), (ack) => {
               this.loggeduserData.loggedUserModelInstance = userModel;
               this.routerAN.navigate(['/colonies']);
             });

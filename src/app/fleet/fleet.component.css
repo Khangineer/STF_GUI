@@ -6,7 +6,18 @@
     background-position: center top;    
 }
 
-img{
-    width: 50%;
-    height: 50%;
+.fixed-size-img {
+    height: auto; 
+    width: auto;   
+}
+
+.box{
+    height: auto;
+}
+
+.panel-block{
+    background-color: whitesmoke;
+    border-style: 10px solid;
+    border-color: black;
+    align-items: left;
 }

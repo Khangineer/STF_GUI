@@ -1,19 +1,42 @@
 <section class="hero is-fullheight">
-    <div class="columns is-vcentered">
-        <div class="column">
-            
+    <div class="fixed-grid">
+        <div class="grid has-text-centered">
+          <div class="cell">
+            @if (showSC) {
+                <figure class="image is-128x128">
+                    <img [src]="shipImageSRC" />
+                  </figure>
+                <i class="fas fa-solid fa-expand fa-beat" style="color: #FF0000;"></i><br>
+                <i class="fas fa-solid fa-hexagon-nodes-bolt" style="color: #FF0000;"></i><br>
+                <i class="fas fa-solid fa-weight-hanging" style="color: #FF0000;"></i>
+            }
+          </div>
+          <div class="cell">
+            <div class="columns">
+                <div class="column is-four-fifths">
+                    <div class="box">Your Fleet</div>
+                </div>
+                <div class="column">
+                    <img src="/assets/images/LogoSTF_White.png" alt="logo" class="fixed-size-img">
+                </div>
+            </div>
+            <nav class="panel is-link">
+                @for (spacecraft of spaceFleet; track spacecraft.name) {
+                    <a class="panel-block is-active" (click)="showSpacecraftInfo(spacecraft.U_SID)">
+                        <span class="panel-icon">
+                            <i class="fas fa-space-shuttle"></i>
+                        </span>
+                        {{spacecraft.name}}
+                      </a>
+                    }
+              </nav>
+          </div>
+          <div class="cell">
+
+          </div>
+          <div class="cell">
+    
+          </div>
         </div>
-        <div class="column">
-            
-        </div>
-        <div class="column">
-            
-        </div>
-        <div class="column">
-            
-        </div>
-        <div class="column has-text-right">
-            <img src="/assets/images/LogoSTF_White.png" alt="logo">
-        </div>
-    </div>
+      </div>
 </section>
