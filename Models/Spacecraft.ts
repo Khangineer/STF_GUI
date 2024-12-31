@@ -16,7 +16,7 @@ export const registeredSpacecraftModels = new Map<string, Spacecraft>([
             hasHyperdrive: false,
             capacity: 4000,
             attackPower: 2,
-            imagePinata_CID: "bafybeieip74a66t2i33ovck7igngb7w6vdavxemeck5lfih3ik5mccxqcm",
+            imagePinata_CID: "bafybeihzjuxyj77kgycm6jf6gukndfw5yfkoke5nv376dbm6qygn5uovfi",
         },
     ],
     [   //TODO wygenerować z AI obrazki dla tych dwóch statków, wrzucić je na Pinata i nadać tutaj odpowiedni CID

@@ -95,50 +95,17 @@ export class LoginPageComponent implements OnInit{
           console.log("zalogowano");
           this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
           this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
-          this.loggeduserData.loggedUserGunInstance = user
+          this.loggeduserData.loggedUserGunInstance = user;
 
-          const xd = new Map([
-            [1400, resources[0]],
-            [200, resources[1]],
-            [50, resources[30]],
-        ]);
-        
-        // Konwersja Map na obiekt dla serializacji
-        const xd2 = JSON.stringify(Object.fromEntries(xd));
-        console.log(xd2);
-
-        const userModel : User = {
-          walletAddress: this.UserAccount,
-          reputation: 0,
-          ownedSpacecrafts: [
-            registeredSpacecraftModels.get("Pioneer")!, registeredSpacecraftModels.get("Vexilris")!, registeredSpacecraftModels.get("Hepatos")!
-          ],
-        }
-        const jsonModel = JSON.stringify(userModel);
-        console.log(jsonModel);
-        console.log(xd2);
-        
-        const obj1 = JSON.parse(jsonModel);
-        console.log(obj1);
-
-        const obj2 = JSON.parse(xd2);
-        console.log(obj2);
-        const reski = {"storedResources": obj2};
-        const rr = {...obj1, ...reski};
-        console.log(rr);
-
-        user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put((JSON.stringify(rr)), (ack) => {
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
-            console.log(data);
-            console.log("wyzej z bazy");
-          })
-          this.routerAN.navigate(['/colonies']);
-        });
-
-
+            this.loggeduserData.loggedUserModelInstance = JSON.parse(data);
+            console.log(this.loggeduserData.loggedUserModelInstance);
+            console.log("wyzej z bazy");             
+            this.routerAN.navigate(['/colonies']);
+            })
+          }
         }
-      });
-
+      )
     }
     else{
       user.create(this.UserAccount + "STFA", this.myForm.get('password')?.value, ack => {
@@ -151,18 +118,34 @@ export class LoginPageComponent implements OnInit{
             this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
             this.loggeduserData.loggedUserGunInstance = user;
   
-            const userModel : User = {
-              walletAddress: this.UserAccount,
-              reputation: 0,
-              ownedSpacecrafts: [
-                registeredSpacecraftModels.get("Pioneer")!,
-              ],
-            }
-            
-            user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(JSON.stringify(userModel), (ack) => {
-              this.loggeduserData.loggedUserModelInstance = userModel;
-              this.routerAN.navigate(['/colonies']);
-            });
+            const resMap = new Map([
+              [1400, resources[0]],
+              [200, resources[1]],
+              [50, resources[30]],
+          ]);
+          
+          // Konwersja Map na obiekt dla serializacji
+          const resMapJSON = JSON.stringify(Object.fromEntries(resMap));
+          console.log(resMapJSON);
+  
+          const userModel : User = {
+            walletAddress: this.UserAccount,
+            reputation: 0,
+            ownedSpacecrafts: [
+              registeredSpacecraftModels.get("Pioneer")!
+            ],
+          }
+          const resMapObj = JSON.parse(resMapJSON);
+          const reski = {"storedResources": resMapObj};
+          const finishedJSON = {...userModel, ...reski};
+          console.log(finishedJSON);
+  
+          user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put((JSON.stringify(finishedJSON)), (ack) => {
+            user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
+              console.log("data");
+            })
+            this.routerAN.navigate(['/colonies']);
+          });
           }
         });
       });
