@@ -21,3 +21,29 @@
     border-color: black;
     align-items: left;
 }
+
+
+div > i{
+    font-size: 200%;
+    margin-left: 3%;
+    margin-top: 7%;
+}
+
+#SC_BCK{
+    background-image: url("/assets/images/SC_BCK3.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.label{
+    font-size: 270%;
+    font-family: "Origin Tech Demo";
+    color: #FFFFFF;
+    margin-bottom: -2%;
+}
+
+#SC_STATS{
+    font-size: 150%;
+    font-family: "Origin Tech Demo";
+    color: rgb(242, 242, 242);
+}

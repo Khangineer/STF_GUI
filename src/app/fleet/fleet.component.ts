@@ -34,12 +34,12 @@ export class FleetComponent {
       pinataGateway: "brown-faithful-shrimp-92.mypinata.cloud",
     });
     
-    const url = await pinata.gateways.get(
+    const { data, contentType } = await pinata.gateways.get(
       this.selectedSpacecraft.imagePinata_CID
     )
 
-    if (url.data instanceof Blob) {
-      this.shipImageSRC = window.URL.createObjectURL(url.data);
+    if (data instanceof Blob) {
+      this.shipImageSRC = window.URL.createObjectURL(data);
     } else {
         console.error("Dane nie są typem Blob, nie można utworzyć URL.");
     }

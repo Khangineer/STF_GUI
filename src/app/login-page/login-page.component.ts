@@ -10,6 +10,8 @@ import { env } from '../../../env';
 import { LoggedUserDataService } from '../../../resources/logged-user-data.service';
 import { User } from '../../../Models/User';
 import { AppComponent } from '../app.component';
+import { registeredSpacecraftModels } from '../../../Models/Spacecraft';
+import { resources } from '../../../Models/Resource';
 
 
 @Component({
@@ -95,12 +97,48 @@ export class LoginPageComponent implements OnInit{
           this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
           this.loggeduserData.loggedUserGunInstance = user
 
+          const xd = new Map([
+            [1400, resources[0]],
+            [200, resources[1]],
+            [50, resources[30]],
+        ]);
+        
+        // Konwersja Map na obiekt dla serializacji
+        const xd2 = JSON.stringify(Object.fromEntries(xd));
+        console.log(xd2);
+
+        const userModel : User = {
+          walletAddress: this.UserAccount,
+          reputation: 0,
+          ownedSpacecrafts: [
+            registeredSpacecraftModels.get("Pioneer")!, registeredSpacecraftModels.get("Vexilris")!, registeredSpacecraftModels.get("Hepatos")!
+          ],
+        }
+        const jsonModel = JSON.stringify(userModel);
+        console.log(jsonModel);
+        console.log(xd2);
+        
+        const obj1 = JSON.parse(jsonModel);
+        console.log(obj1);
+
+        const obj2 = JSON.parse(xd2);
+        console.log(obj2);
+        const reski = {"storedResources": obj2};
+        const rr = {...obj1, ...reski};
+        console.log(rr);
+
+        user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put((JSON.stringify(rr)), (ack) => {
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
-            this.loggeduserData.loggedUserModelInstance = JSON.parse(data);
-            this.routerAN.navigate(['/colonies']);
+            console.log(data);
+            console.log("wyzej z bazy");
           })
+          this.routerAN.navigate(['/colonies']);
+        });
+
+
         }
       });
+
     }
     else{
       user.create(this.UserAccount + "STFA", this.myForm.get('password')?.value, ack => {
@@ -117,8 +155,8 @@ export class LoginPageComponent implements OnInit{
               walletAddress: this.UserAccount,
               reputation: 0,
               ownedSpacecrafts: [
-                {U_SID: 0, name: "Pioneer", hasHyperdrive: false, capacity: 4000, attackPower: 2, imagePinata_CID: "bafybeieip74a66t2i33ovck7igngb7w6vdavxemeck5lfih3ik5mccxqcm"}
-              ]
+                registeredSpacecraftModels.get("Pioneer")!,
+              ],
             }
             
             user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put(JSON.stringify(userModel), (ack) => {

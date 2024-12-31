@@ -1,17 +1,30 @@
 <section class="hero is-fullheight">
     <div class="fixed-grid">
-        <div class="grid has-text-centered">
-          <div class="cell">
+        <div class="grid">
+          <div class="cell" id="SC_BCK">
             @if (showSC) {
-                <figure class="image is-128x128">
+              <div class="columns">
+                <div class="column" id="SC_STATS">
+                  <label class="label has-text-centered">{{this.selectedSpacecraft.name}}</label>
+                  <i class="fas fa-solid fa-expand fa-beat" style="color: #FF0000;"></i>{{" " + this.selectedSpacecraft.attackPower}} Attack Power<br>
+                  <i class="fas fa-solid fa-hexagon-nodes-bolt" style="color: #FF0000;"></i>
+                  @if (this.selectedSpacecraft.hasHyperdrive) {
+                    Has Hyperdrive
+                  }
+                  @else {
+                    Does not have Hyperdrive
+                  }<br>
+                  <i class="fas fa-solid fa-weight-hanging" style="color: #FF0000;"></i>{{" " + this.selectedSpacecraft.capacity}} Capacity
+                </div>
+                <div class="column">
+                  <figure class="image">
                     <img [src]="shipImageSRC" />
-                  </figure>
-                <i class="fas fa-solid fa-expand fa-beat" style="color: #FF0000;"></i><br>
-                <i class="fas fa-solid fa-hexagon-nodes-bolt" style="color: #FF0000;"></i><br>
-                <i class="fas fa-solid fa-weight-hanging" style="color: #FF0000;"></i>
+                </figure>
+                </div>
+              </div>
             }
           </div>
-          <div class="cell">
+          <div class="cell  has-text-centered">
             <div class="columns">
                 <div class="column is-four-fifths">
                     <div class="box">Your Fleet</div>

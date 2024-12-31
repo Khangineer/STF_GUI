@@ -5,7 +5,7 @@ import { Spacecraft } from "./Spacecraft";
 export interface User{
     walletAddress : string;
     ownedSpacecrafts? : Spacecraft[];
-    storedResources? : Resource[];
+    storedResources? : Map<number, Resource>;
     ownedColonies? : Colony[];
     reputation : number;
 }
