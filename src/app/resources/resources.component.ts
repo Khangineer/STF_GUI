@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggedUserDataService } from '../../../resources/logged-user-data.service';
 
 @Component({
   selector: 'app-resources',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './resources.component.css'
 })
 export class ResourcesComponent {
+
+  resources : any;
+
+  constructor(private loggedUserData : LoggedUserDataService){
+    this.resources = loggedUserData.loggedUserModelInstance.storedResources;
+    console.log(this.resources);
+  }
 
 }

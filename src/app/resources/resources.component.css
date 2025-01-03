@@ -1,12 +1,48 @@
 .hero {
     margin: 0; /* Usuń marginesy wokół body */
-    background-image: url("/assets/images/DALE-4.png");
+    background-image: url("/assets/images/resourcesBackground.png");
     background-repeat: no-repeat;
     background-size: cover; /* Dopasuj szerokość do przeglądarki, wysokość w proporcjach */
     background-position: center top;    
 }
+.fixed-size-img {
+    height: auto; 
+    width: auto;   
+}
 
-img{
-    width: 50%;
-    height: 50%;
+.box{
+    height: auto;
+}
+
+.panel-block{
+    background-color: whitesmoke;
+    border-style: 10px solid;
+    border-color: black;
+    align-items: left;
+}
+
+
+div > i{
+    font-size: 200%;
+    margin-left: 3%;
+    margin-top: 7%;
+}
+
+#SC_BCK{
+    background-image: url("/assets/images/SC_BCK3.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.label{
+    font-size: 270%;
+    font-family: "Origin Tech Demo";
+    color: #FFFFFF;
+    margin-bottom: -2%;
+}
+
+#SC_STATS{
+    font-size: 150%;
+    font-family: "Origin Tech Demo";
+    color: rgb(242, 242, 242);
 }

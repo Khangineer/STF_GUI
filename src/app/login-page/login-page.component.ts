@@ -11,7 +11,7 @@ import { LoggedUserDataService } from '../../../resources/logged-user-data.servi
 import { User } from '../../../Models/User';
 import { AppComponent } from '../app.component';
 import { registeredSpacecraftModels } from '../../../Models/Spacecraft';
-import { resources } from '../../../Models/Resource';
+import { resources, startingResources } from '../../../Models/Resource';
 
 
 @Component({
@@ -96,7 +96,7 @@ export class LoginPageComponent implements OnInit{
           this.loggeduserData.loggedUserWalletAddress = this.UserAccount;
           this.loggeduserData.loggedUserWalletAddressSTFA = this.UserAccount + "STFA";
           this.loggeduserData.loggedUserGunInstance = user;
-
+          
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
             this.loggeduserData.loggedUserModelInstance = JSON.parse(data);
             console.log(this.loggeduserData.loggedUserModelInstance);
@@ -119,9 +119,9 @@ export class LoginPageComponent implements OnInit{
             this.loggeduserData.loggedUserGunInstance = user;
   
             const resMap = new Map([
-              [1400, resources[0]],
-              [200, resources[1]],
-              [50, resources[30]],
+              [startingResources[0].U_RID, startingResources[0]],
+              [startingResources[1].U_RID, startingResources[1]],
+              [startingResources[2].U_RID, startingResources[2]],
           ]);
           
           // Konwersja Map na obiekt dla serializacji

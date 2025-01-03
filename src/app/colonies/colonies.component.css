@@ -1,6 +1,6 @@
 .hero {
     margin: 0; /* Usuń marginesy wokół body */
-    background-image: url("/assets/images/DALE-4.png");
+    background-image: url("/assets/images/image1.png");
     background-repeat: no-repeat;
     background-size: cover; /* Dopasuj szerokość do przeglądarki, wysokość w proporcjach */
     background-position: center top;    
