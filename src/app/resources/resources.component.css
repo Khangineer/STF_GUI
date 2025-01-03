@@ -46,3 +46,8 @@ div > i{
     font-family: "Origin Tech Demo";
     color: rgb(242, 242, 242);
 }
+
+strong{
+    color: black;
+    font-weight: bold;
+}

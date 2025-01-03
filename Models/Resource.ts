@@ -67,3 +67,5 @@ export const startingResources = [
     { U_RID: 1, name: "Quemitum", quality: 4, isNecessaryForHyperdriveContruction: false, weight: 2, imagePinata_CID: "bafybeiecgdvjzvidhyufgptrygz6ksipiowtqdpqzhwofhuw2wpjj3cnqi", quantity: 100 },
     { U_RID: 30, name: "Draconium", quality: 6, isNecessaryForHyperdriveContruction: true, weight: 1, imagePinata_CID: "bafybeib2ab5cviv3apaos7fw6uh36u6rflvqsbvvlpnawafn4zktwemf3u", quantity: 20 },
 ]
+
+export type ResourcePair = [string, Resource];
