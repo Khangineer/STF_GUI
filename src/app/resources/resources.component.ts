@@ -13,7 +13,7 @@ export class ResourcesComponent {
   resources : any;
 
   constructor(private loggedUserData : LoggedUserDataService){
-    this.resources = loggedUserData.loggedUserModelInstance.storedResources;
+    this.resources = Object.entries(loggedUserData.loggedUserModelInstance.storedResources);
     console.log(this.resources);
   }
 
