@@ -19,7 +19,6 @@ export class FleetComponent {
   shipImageSRC : any;
   constructor(private loggedUserData : LoggedUserDataService){
     this.spaceFleet = loggedUserData.loggedUserModelInstance.ownedSpacecrafts;
-    console.log(this.loggedUserData.loggedUserModelInstance);
   }
 
   async showSpacecraftInfo(U_SID : number){

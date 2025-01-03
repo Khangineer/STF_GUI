@@ -28,6 +28,8 @@ export class ColoniesComponent implements OnInit{
   ngOnInit(): void {
     this.loggedUserData.loggedUserGunInstance.get(this.loggedUserData.loggedUserWalletAddressSTFA).once((data: any) => {
       this.colonies = data.ownedColonies;
+      console.log(this.colonies);
+      console.log("wyzej kolonie");
     });
   }
 

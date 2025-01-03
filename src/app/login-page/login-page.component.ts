@@ -126,7 +126,6 @@ export class LoginPageComponent implements OnInit{
           
           // Konwersja Map na obiekt dla serializacji
           const resMapJSON = JSON.stringify(Object.fromEntries(resMap));
-          console.log(resMapJSON);
   
           const userModel : User = {
             walletAddress: this.UserAccount,
@@ -138,11 +137,10 @@ export class LoginPageComponent implements OnInit{
           const resMapObj = JSON.parse(resMapJSON);
           const reski = {"storedResources": resMapObj};
           const finishedJSON = {...userModel, ...reski};
-          console.log(finishedJSON);
   
           user.get(this.loggeduserData.loggedUserWalletAddressSTFA).put((JSON.stringify(finishedJSON)), (ack) => {
             user.get(this.loggeduserData.loggedUserWalletAddressSTFA).once((data) => {
-              console.log("data");
+              console.log(data);
             })
             this.routerAN.navigate(['/colonies']);
           });
