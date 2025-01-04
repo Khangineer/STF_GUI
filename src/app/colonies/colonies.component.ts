@@ -33,26 +33,4 @@ export class ColoniesComponent implements OnInit{
     });
   }
 
-  async SD(){
-
-  }
-
-  async onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
-    this.file = file!;
-
-    const pinata = new PinataSDK({
-      pinataJwt: env.JWT,
-      pinataGateway: "brown-faithful-shrimp-92.mypinata.cloud",
-    })
-  
-    try {
-      const response = await pinata.upload.file(this.file);
-  
-      console.log(response);
-    } catch (error) {
-      console.error("Wystąpił błąd podczas przesyłania pliku:", error);
-    }
-  }
 }

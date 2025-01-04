@@ -34,4 +34,8 @@ export class AppComponent {
   NavNavigation(){
     this.router.navigate(['/navigation']);
   }
+
+  NavCrafting(){
+    this.router.navigate(['crafting']);
+  }
 }

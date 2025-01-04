@@ -6,4 +6,6 @@ export interface Galaxy{
     planetBank? : Planet[];
 }
 
-export const galaxy: Galaxy = { U_GID: 0, name: "Tectaforma", planetBank: planets };
+export const galaxies: Galaxy[] = [
+    { U_GID: 0, name: "Tectaforma", planetBank: planets }
+];

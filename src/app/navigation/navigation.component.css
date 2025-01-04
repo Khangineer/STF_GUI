@@ -1,12 +1,46 @@
 .hero {
     margin: 0; /* Usuń marginesy wokół body */
-    background-image: url("/assets/images/DALE-4.png");
+    background-image: url("/assets/images/navigation1.png");
     background-repeat: no-repeat;
-    background-size: cover; /* Dopasuj szerokość do przeglądarki, wysokość w proporcjach */
+    background-size: cover; 
     background-position: center top;    
 }
 
 img{
     width: 50%;
     height: 50%;
+}
+
+#Tectaforma{
+    margin-top: 5%;
+}
+
+.galaxyImage{
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 10px; 
+}
+
+.galaxyImage:hover{
+    box-shadow: 0 0 7px 3px rgba(255, 255, 255, 0.8);
+}
+
+.fade-in {
+    opacity: 0; /* Ustawiamy domyślnie niewidoczny */
+}
+  
+  /* Ta klasa sprawi, że element będzie widoczny */
+.visible {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1; /* Ustawiamy widoczność */
+}
+
+.shown {
+    opacity: 1; /* Ustawiamy domyślnie niewidoczny */
+    
+}
+  
+  /* Ta klasa sprawi, że element będzie widoczny */
+.gone {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Ustawiamy widoczność */
 }
