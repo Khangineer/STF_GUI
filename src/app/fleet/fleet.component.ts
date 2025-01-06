@@ -44,4 +44,25 @@ export class FleetComponent {
     }
     this.showSC = true;
   }
+
+  getFleetStatistics() {
+    let totalAttackPower = 0;
+    let totalCapacity = 0;
+    let hyperdriveCount = 0;
+
+    this.spaceFleet.forEach((spacecraft: Spacecraft) => {
+      totalAttackPower += spacecraft.attackPower;
+      totalCapacity += spacecraft.capacity;
+      if (spacecraft.hasHyperdrive) {
+        hyperdriveCount++;
+      }
+    });
+
+    return {
+      totalAttackPower,
+      totalCapacity,
+      hyperdriveCount,
+      totalShips: this.spaceFleet.length
+    };
+  }
 }

@@ -1,6 +1,6 @@
 .hero {
     margin: 0; /* Usuń marginesy wokół body */
-    background-image: url("/assets/images/resourcesBackground.png");
+    background-image: url("/assets/images/resourcesBack.png");
     background-repeat: no-repeat;
     background-size: cover; /* Dopasuj szerokość do przeglądarki, wysokość w proporcjach */
     background-position: center top;    
