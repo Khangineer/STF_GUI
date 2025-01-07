@@ -58,7 +58,7 @@ export const resources: Resource[] = [
     { U_RID: 47, name: "Solstice", quality: 4, weight: 3 },
     { U_RID: 48, name: "Nebulite", quality: 3, weight: 5 },
     { U_RID: 49, name: "Quantumite", quality: 5, weight: 1 },
-    { U_RID: 50, name: "Zanovite", quality: 2, weight: 6 },
+    { U_RID: 50, name: "Zanovite", quality: 2, weight: 6 }
 ];
 
 export const startingResources = [

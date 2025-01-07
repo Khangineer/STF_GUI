@@ -9,7 +9,7 @@ export interface Part {
     requiredResources : Map<number, Resource>
 }
 
-export const registeredPartModels = new Map<string, Part>([
+export const registeredPartsModels = new Map<string, Part>([
     [
         "Omega Drive Coil",
         {
@@ -83,5 +83,25 @@ export const registeredPartModels = new Map<string, Part>([
             ])
         }
     ],
-    
+    [
+        "CryoVault Preservation Systems",
+        {
+            U_PID: 6,
+            name: "CryoVault Preservation Systems",
+            imagePinata_CID: "bafkreiac6fuopemgp576vjy746s3dgqd6zu5b6buwe5232eru7gquybtne",
+            isNecessaryForHyperdriveConstruction: false,
+            requiredResources: new Map<number, Resource>([ 
+                [5000, resources[22]], [300, resources[17]], [500, resources[50]], [350, resources[37]], [400, resources[19]] 
+            ])
+        }
+    ]
 ]);
+
+export const Hyperdrive = {
+    imagePinata_CID: "bafkreicd7draovcg3oskj46t6ygosdkh4i3mz2feaejwf4gb35d6lhnuc4",
+    requiredParts : new Map<number, Part>([
+        [15, registeredPartsModels.get("Omega Drive Coil") as Part],
+        [1, registeredPartsModels.get("Omega Drive Chassis") as Part],
+        [1, registeredPartsModels.get("Omega Drive Core") as Part],
+    ])
+};
