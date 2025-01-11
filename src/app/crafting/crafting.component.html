@@ -1,28 +1,93 @@
-<section class="hero is-fullheight">
-    <div class="fixed-grid">
-        <div class="grid has-text-centered">
-          <div class="cell">
-
-          </div>
-          <div class="cell">
-            <div class="columns">
-                <div class="column is-four-fifths">
-                    <div class="box">I'm in a box.</div>
-                </div>
-                <div class="column">
-                    <img src="/assets/images/LogoSTF_White.png" alt="logo" class="fixed-size-img">
-                </div>
+<section class="hero is-fullheight" id="craftingBack">
+    <!-- Main container -->
+  <nav class="level" id="toplevel">
+    <!-- Left side -->
+      <nav class="panel">
+        <p class="panel-heading has-text-centered" id="searchBar">Recipes</p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input" type="text" placeholder="Search" />
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </p>
+        </div>
+        <div class="parts-list-container">
+          @for (part of partsAll; track part.U_PID) {
+            <div class="panel-block is-active" style="color: turquoise;">
+              <span class="panel-icon">
+                <i class="fas fa-cog" aria-hidden="true"></i>
+              </span>
+              {{part.name}}
+              <a>
+                <span class="icon is-small" style="font-size: 25px; color: red; " id="arrow">
+                  <i class="fa fas fa-arrow-right" aria-hidden="true" (click)="showPartInfo(part.U_PID)"></i>
+                </span>
+              </a>
             </div>
-            <nav class="panel">
+          }
+        </div>
+      </nav>
 
-              </nav>
-          </div>
-          <div class="cell">
 
+    <!-- Right side -->
+      <section class="hero is-large" id="craftingSpot">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <img src={{clickedPartImage}} alt="logo" class="fixed-size-img" class="itemBigImage" id="itemBigImage">
+            <h1 class="title">
+              {{clickedPartName}}
+            </h1>
           </div>
-          <div class="cell">
-    
+          <div class="column">
+            <img src="/assets/images/LogoSTF_White.png" alt="craftingBack" class="fixed-size-img">
+            <button class="button is-medium is-rounded is-link" id="craftButton" (click)="CraftPart()">
+              Craft
+            </button>
           </div>
         </div>
-      </div>
+      </section>
+  </nav>
+
+  <div class="panelForItems">
+    <div class="grid is-col-min-3 is-gap-0">
+      <div class="cell">Cell 1</div>
+      <div class="cell">Cell 2</div>
+      <div class="cell">Cell 3</div>
+      <div class="cell">Cell 4</div>
+      <div class="cell">Cell 5</div>
+      <div class="cell">Cell 6</div>
+      <div class="cell">Cell 7</div>
+      <div class="cell">Cell 8</div>
+      <div class="cell">Cell 9</div>
+      <div class="cell">Cell 10</div>
+      <div class="cell">Cell 11</div>
+      <div class="cell">Cell 12</div>
+      <div class="cell">Cell 13</div>
+      <div class="cell">Cell 14</div>
+      <div class="cell">Cell 15</div>
+      <div class="cell">Cell 16</div>
+      <div class="cell">Cell 17</div>
+      <div class="cell">Cell 18</div>
+      <div class="cell">Cell 19</div>
+      <div class="cell">Cell 20</div>
+      <div class="cell">Cell 21</div>
+      <div class="cell">Cell 22</div>
+      <div class="cell">Cell 23</div>
+      <div class="cell">Cell 24</div>
+      <div class="cell">Cell 14</div>
+      <div class="cell">Cell 15</div>
+      <div class="cell">Cell 16</div>
+      <div class="cell">Cell 17</div>
+      <div class="cell">Cell 18</div>
+      <div class="cell">Cell 19</div>
+      <div class="cell">Cell 20</div>
+      <div class="cell">Cell 21</div>
+      <div class="cell">Cell 22</div>
+      <div class="cell">Cell 23</div>
+      <div class="cell">Cell 24</div>
+    </div>
+
+  </div>
+  
 </section>

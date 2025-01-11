@@ -64,7 +64,7 @@ export const registeredPartsModels = new Map<string, Part>([
         {
             U_PID: 4,
             name: "Nebular Energy Shield Generator",
-            imagePinata_CID: "bafybeihzjuxyj77kgycm6jf6gukndfw5yfkoke5nv376dbm6qygn5uovfi",
+            imagePinata_CID: "bafkreie5ionpmd2u6dvdk7wtimpoji5e4y4naetkk6sdiw5bmgbpy4hbjq",
             isNecessaryForHyperdriveConstruction: false,
             requiredResources: new Map<number, Resource>([
                 [150, resources[0]], [300, resources[47]], [500, resources[48]] 

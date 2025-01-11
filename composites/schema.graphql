@@ -1,0 +1,52 @@
+type User @createModel(accountRelation: SINGLE) {
+    walletAddress: String! @string(minLength: 1, maxLength: 100) @documentAccount
+    reputation: Int! @int(min: 0)
+    createdAt: DateTime!
+}
+
+type Spacecraft @createModel(accountRelation: LIST) {
+    owner: DID! @documentAccount
+    U_SID: number!
+    name: String!
+    hasHyperdrive: boolean!
+    capacity: number!
+    attackPower: number!
+    imagePinata_CID: string!
+}
+
+type Resource @createModel(accountRelation: LIST) {
+    owner: DID! @documentAccount
+    U_RID: number!
+    quality: number!
+    name: String!
+    quantity: number!
+    imagePinata_CID: String!
+}
+
+type Part @createModel(accountRelation: LIST) {
+    owner: DID! @documentAccount
+    U_PID: number!
+    name: String!
+    imagePinata_CID: String!
+    isNecessaryForHyperdriveConstruction: boolean!
+    requiredResources: [StreamID] @list(maxLength: 100)
+}
+
+type Colony @createModel(accountRelation: LIST) {
+    owner: DID! @documentAccount
+    U_CID: number!
+    name: String!
+    resourceBank: [StreamID] @list(maxLength: 100)
+}
+
+type Planet @createModel(accountRelation: LIST) {
+    U_PID: number! @documentAccount
+    name: String!
+    colonyBank: [StreamID] @list(maxLength: 100)
+}
+
+type Galaxy @createModel(accountRelation: LIST) {
+    U_GID: number! @documentAccount
+    name: String!
+    planetBank: [StreamID] @list(maxLength: 100)
+}
